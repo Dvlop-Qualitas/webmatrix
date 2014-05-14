@@ -1,0 +1,41 @@
+﻿@{
+   
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+
+        <header></header>      
+        <section>
+            <h2>Gráfica Pie de Productos Vendidos</h2>
+            <div style="clear: both"> </div>
+
+
+
+                @{
+                    var conexion=Database.Open("tienda");
+                    var peticion=conexion.Query("Select * from productosvendidos");
+
+                    var myChart=new Chart(width:500, height:300, theme: ChartTheme.Green)
+                        .AddTitle("Ventas")
+                        .AddSeries(chartType:"Pie",
+                            xValue: peticion, xField:"tipoproducto",
+                            yValues: peticion, yFields:"valor"
+                        )
+                        .Write();
+                }
+
+
+           <div style="clear: both"> </div>           
+        </section>
+        <footer></footer>
+
+        
+    </body>
+</html>

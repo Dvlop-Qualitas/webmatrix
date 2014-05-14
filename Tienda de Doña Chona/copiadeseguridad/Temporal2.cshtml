@@ -1,0 +1,72 @@
+﻿@{
+    
+    int edad=34;
+
+    string [] ciudad=new string[]{"Valencia","Madrid","Barcelona"};
+
+    string [] ciudad2=new string[]{"Valencia","Madrid","Barcelona","Bilbao","Alicate"};
+
+    int contador=1;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <style>
+            .dia {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            float: left;        
+                
+            }
+        </style>
+    </head>
+    <body>
+                <h3>Calendario</h3>
+        @for(var n = 1; n < 32; n++)
+            {
+
+                    if(n == 7 || n==14 || n==21 || n==28)
+                    {
+                        <div class="dia" style="background:red;">@n</div><div style="clear: both"> </div>
+                    }
+                    else
+                    {
+                        <div class="dia" style="background:gray;">@n</div>
+                    }
+            
+            }
+
+        <div style="clear: both"> </div>
+        <p>La primera ciudad de la lista es @ciudad[0]</p>
+        <p>La segunda ciudad de la lista es @ciudad[1]</p>
+        <p>La tercera ciudad de la lista es @ciudad[2]</p>
+
+
+        @foreach(var c in ciudad2)
+        {
+            <p>La ciudad es: @c</p>
+
+        }
+
+        @while(contador<10)
+        {
+            <p>Estoy dentro del bucle While</p>
+            contador++;
+        }
+
+        @if(edad<30)
+        {
+            <p>Tu edad es menor a 30 años</p>
+        }
+        else
+        {
+            <p>Tu edad es superior a 30 años</p>
+        }      
+        <p>Ya he terminado el bucle</p>
+    </body>
+</html>

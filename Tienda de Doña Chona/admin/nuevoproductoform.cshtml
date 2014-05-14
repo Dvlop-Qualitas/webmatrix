@@ -1,0 +1,75 @@
+﻿@{
+        string id=Request.QueryString["id"];
+        string nombre=Request.QueryString["nombre"];
+        string descripcion=Request.QueryString["descripcion"];
+        string peso=Request.QueryString["peso"];
+        string precio=Request.QueryString["precio"];
+        string dimensiones=Request.QueryString["dimensiones"];
+
+        if (id != null)
+        {
+            var conexion=Database.Open("tienda");
+            var peticion = conexion.Query("INSERT INTO productos Values('"+id+"','"+nombre+"','"+descripcion+"','"+peso+"','"+precio+"','"+dimensiones+"')");
+        }
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="admin.css"/>
+    </head>
+    <body>
+        <div id="contenedor">
+                @RenderPage("menu.cshtml")
+            <div id="contenido">
+                 <h1>Formulario de un producto nuevo</h1>
+                <form method="GET" action="">
+                    <table>
+                        <tr>
+                            <td>Introduce el ID</td><td><input type="text" name="id"></td>
+                        </tr>
+                        <tr>
+                            <td>Introduce el Nombre</td><td><input type="text" name="nombre"></td>
+                        </tr>
+                        <tr>
+                            <td>Introduce la Descripcion</td><td><input type="text" name="descripcion"></td>
+                        </tr>
+                        <tr>
+                            <td>Introduce el Peso</td><td><input type="text" name="peso"></td>
+                        </tr>
+                        <tr>
+                            <td>Introduce el Precio</td><td><input type="text" name="precio"></td>
+                        </tr>
+                        <tr>
+                            <td>Introduce las Dimensiones</td><td><input type="text" name="dimensiones"></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><input type="submit"></td>
+                        </tr>
+                    </table>
+                    @if (id != null)
+                    {
+                         <p>Has introducido el siguiente id: @id</p>
+                         <p>Has introducido el siguiente nombre: @nombre</p> 
+                         <p>Has introducido el siguiente descripcion: @descripcion</p>                                                                                                                      
+                         <p>Has introducido el siguiente peso: @peso</p>                                             
+                         <p>Has introducido el siguiente precio: @precio</p> 
+                         <p>Has introducido el siguiente dimensiones: @dimensiones</p> 
+
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </form>                                     
+            </div>
+        </div>
+
+    </body>
+</html>

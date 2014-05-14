@@ -1,0 +1,26 @@
+﻿@{
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <section>
+        @{
+            var myChart=new Chart(width:500, height:300, theme: ChartTheme.Green)
+                .AddTitle("Ventas")
+                .AddSeries(chartType:"column",
+                    xValue: new[]{"Enero","Febrero","Marzo","Abril","Mayo"},
+                    yValues: new[]{"10","20","24","56","23"}
+                )
+                .Write();
+        }
+        </section>
+        
+
+    </body>
+</html>

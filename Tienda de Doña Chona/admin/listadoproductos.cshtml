@@ -1,0 +1,27 @@
+﻿@{
+    var conexion=Database.Open("tienda");
+    var peticion=conexion.Query("Select * from productos order by id");
+    var grid=new WebGrid(peticion);
+    
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="admin.css"/>
+    </head>
+    <body>
+        <div id="contenedor">
+            @RenderPage("menu.cshtml")
+            <div id="contenido">
+                 <h1>Listado de Productos</h1>  
+                 @grid.GetHtml()        
+            </div>
+        </div>
+        
+
+    </body>
+</html>
